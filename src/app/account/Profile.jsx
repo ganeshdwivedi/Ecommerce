@@ -33,9 +33,10 @@ const Profile = () => {
         </div>
 
         <div className="md:hidden text-sm my-2">
-          <h1 className="font-semibold"></h1>
-          <span>Travel, Nature and Music</span>
-          <p>Lorem ipsum dolor sit amet consectetur</p>
+          <h1 className="text-2xl text-green-600">Your Credentials are:-</h1>
+            <h1 className="font-semibold">Email: {User.email}</h1>
+            <span>Id: {User.id}</span>
+            <p>Your Account is created on: {User.created}</p>
         </div>
       </header>
     </div>
