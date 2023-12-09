@@ -21,6 +21,7 @@ function GetProducts() {
   }
   const AddToCart = (product) => {
     dispatch(addtocart(product));
+    toast.success("product added successfully");
   };
 
   const nextPage = () => {

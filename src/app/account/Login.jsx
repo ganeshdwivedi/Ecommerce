@@ -14,6 +14,7 @@ function Login() {
   const [password, setPassword] = useState("");
 
   const handleSubmit = async () => {
+    toast("wait while we recognize user");
     try {
       if (email != "" && password != "") {
         const response = await axios.post("/api/user/login", {
@@ -34,14 +35,14 @@ function Login() {
   return (
     <>
       <section>
-        <div className='md:w-[99.5vw] sm:mt-16 sm:w-[100vw] bg-cover bg-center bg-[url("https://img.freepik.com/free-vector/gradient-glassmorphism-horizontal-banner_23-2149440108.jpg")] lg:mt-20  font-[FFDINforPumaW07-Regular-latin] relative overflow-x-clip '>
+        <div className='md:w-[99.5vw] sm:mt-16 sm:w-[100vw] bg-cover bg-center bg-[url("https://img.freepik.com/premium-photo/beautiful-abstract-gold-blue-transparent-floral-design-background-banner-copy-space-minimalism_878783-7097.jpg?w=996")] lg:mt-20  font-[FFDINforPumaW07-Regular-latin] relative overflow-x-clip '>
           <div className="m-36 sm:m-2 ">
             <h1 className="text-4xl sm:pt-2 font-extrabold text-left lg:pl-20 pb-5 ">
               My Account
             </h1>
-            <div className=" flex justify-center">
+            <div className="mb-[-15px] p-10 flex justify-center">
               <form
-                className="md:w-[37vw] rounded-md p-10 bg-white bg-opacity-30 backdrop-blur-[6px] sm:w-full"
+                className="md:w-[37vw] rounded-md p-10 bg-black bg-opacity-10 backdrop-blur-[6px] sm:w-full"
                 onSubmit={(e) => {
                   e.preventDefault();
                 }}
@@ -51,7 +52,7 @@ function Login() {
                   <hr className="h-[2px] w-full mt-4 mb-8 bg-gray-200 border-0 dark:bg-gray-700" />
                 </div>
                 <div className="flex flex-col justify-start items-center">
-                  <p className="text-slate-700 text-sm self-start">
+                  <p className="text-slate-950 text-sm self-start ">
                     Enter your username and password to log in
                   </p>
                   <div className="flex flex-col my-3">
@@ -88,11 +89,11 @@ function Login() {
                   >
                     Login
                   </button>
-                  <p className="text-xs m-3">
+                  <p className="text-xs m-3 ">
                     By logging in, I confirm that I have read and accept the
                     Terms and Conditionsand the Privacy Policy.
                   </p>
-                  <Link href={"/account/Register"} className="self-start">
+                  <Link href={"/account/Register"} className="self-start ">
                     Don't Have an account yet{" "}
                     <span className="text-lg font-bold underline">
                       Register Here

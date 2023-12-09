@@ -27,7 +27,7 @@ function Nav() {
   return (
     <>
       <nav className="relative ">
-        <div className="flex backdrop-blur-lg bg-slate-200 bg-opacity-50 flex-row justify-between z-50 md:h-20 sm:h-[10vh] top-0 fixed w-full px-10">
+        <div className="flex backdrop-blur-lg bg-slate-200 bg-opacity-50 flex-row sm:justify-between md:justify-around z-50 md:h-20 sm:h-[10vh] top-0 fixed w-full px-10">
           <div className="w-20 self-center ">
             <Link href={"/"}>
               <img
@@ -129,9 +129,26 @@ function Nav() {
                 <ShoppingCartIcon className="text-black" fontSize="medium" />
               </Link>
             </div>
-            <div className="sm:hidden md:block w-6">
+            {IsLogedIn ? (
+              <div className="md:block sm:hidden">
+                <Link href={"/account/profile"}>
+                  <img
+                    className="w-10 h-10 object-cover rounded-full
+                    "
+                    src={User.profile}
+                    alt="profile"
+                  />
+                </Link>
+              </div>
+            ) : null}
+            <div className="md:block sm:hidden">
               {IsLogedIn ? (
-                <button onClick={handleLogOut}>hello {User.name}</button>
+                <button
+                  onClick={handleLogOut}
+                  className="text-ltext-black  font-bold  px-4 py-2 border-solid border-2 border-black "
+                >
+                  Logout
+                </button>
               ) : (
                 <Link href={"/account/Login"}>
                   <AccountCircleIcon className="text-black" fontSize="medium" />
@@ -139,7 +156,7 @@ function Nav() {
               )}
             </div>
             <div>
-              <button onClick={Toggle} className="text-black Hamburger">
+              <button onClick={Toggle} className="text-black Hamburger px-2 ">
                 {toggle ? "X" : "Menu"}
               </button>
             </div>
@@ -153,9 +170,14 @@ function Nav() {
           <ul className={`ml-[5vw] flex-col flex text-lg font-bold`}>
             {IsLogedIn ? (
               <li>
-                <Link href="/account/profile">
-                  <img className="w-[20vw] rounded-full" src={User.profile} />
-                  <h1>Hello {User.name}</h1>
+                <Link href={"/account/profile"}>
+                  <img
+                    className="w-10 h-10 object-cover rounded-full
+                    "
+                    src={User.profile}
+                    alt="profile"
+                  />
+                  <h1 className="text-blue-600">Hello {User.name}</h1>
                 </Link>
               </li>
             ) : null}
