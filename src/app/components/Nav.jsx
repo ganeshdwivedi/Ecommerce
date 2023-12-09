@@ -117,12 +117,12 @@ function Nav() {
 
           <div className="flex flex-row gap-5  items-center ld:order-1 sm:order-none md:order-1">
             <div className="w-6 sm:justify-self-end">
-              <Link href={"/Wishlist"}>
+              <Link href={"/wishlist"}>
                 <FavoriteBorderIcon className="text-black" fontSize="medium" />
               </Link>
             </div>
             <div className="w-6">
-              <Link href={"/Cart"}>
+              <Link href={"/cart"}>
                 <p className="text-black bg-slate-200 rounded-3xl absolute font-extrabold  px-2 sm:top-[7%] md:top-[15%] text-sm">
                   {item.length}
                 </p>
