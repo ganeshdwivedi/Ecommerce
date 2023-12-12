@@ -2,11 +2,13 @@
 import React from "react";
 import Link from "next/link";
 import { useGetProductByCategoryQuery } from "../redux/productApi";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addtocart } from "../redux/cartSlice";
 import Loading from "./loading";
+import toast, { Toaster } from "react-hot-toast";
 
 function page() {
+  const IsLogedIn = useSelector((state) => state.auth.isLogedIn);
   const dispatch = useDispatch();
   const { isError, isLoading, isSuccess, data } =
     useGetProductByCategoryQuery("womens-bags");
@@ -45,7 +47,9 @@ function page() {
         </Link>
         <button
           onClick={() => {
-            AddToCart(data);
+            IsLogedIn
+              ? AddToCart(data)
+              : toast.error("please login to add to cart");
           }}
           className="bg-black rounded-md text-white px-3 py-1 m-2"
         >
@@ -58,11 +62,10 @@ function page() {
   return (
     <>
       <div className="flex justify-center sm:my-[4.5rem] my-10">
-        {
-          <div className="grid md:grid-cols-2 sm:grid-cols-2 sm:gap-x-5 sm:gap-y-0 md:gap-x-10">
-            {getAllProducts}
-          </div>
-        }
+        <div className="grid md:grid-cols-2 sm:grid-cols-2 sm:gap-x-5 sm:gap-y-0 md:gap-x-10">
+          {getAllProducts}
+        </div>
+        <Toaster />
       </div>
     </>
   );
